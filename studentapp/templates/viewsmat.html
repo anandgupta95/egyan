@@ -1,0 +1,31 @@
+{% extends "studentparent.html" %}
+{% load static %}
+{% block body %}
+    <div class="row">
+        <div class="col-sm-12">
+            <h1 style="text-align:center;">View Study Material</h1>  
+            
+            <table class="table table-bordered text-light w-75 m-auto mt-5">
+                <tr>
+                    <th>S.no.</th>
+                    <th>Subject</th>
+                    <th>File Name</th>
+                    <th>Download</th>
+                </tr>
+                {% for m in mat %}
+                <tr>
+                    <td>{{forloop.counter}}</td>
+                    <td>{{m.subject}}</td>
+                    <td>{{m.filename}}</td>
+                    <td>
+                        <a download href="{{m.myfile.url}}" >
+                            <img src="{% static 'images/download.png' %}" class="rounded w-75 mx-2 " style="text-decoration: none;" alt="">
+                        </a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </table>
+              
+        </div>
+    </div>
+{% endblock body %}

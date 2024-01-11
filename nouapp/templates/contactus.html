@@ -1,0 +1,111 @@
+{% extends "parent.html" %}
+
+{% load static %}
+
+
+{% block body %}
+<script>
+  function validate()
+  {
+     var name = document.getElementById('name');
+     var contactno = document.getElementById('contactno');
+     var emailaddress = document.getElementById('emailaddress');
+     var emailexp = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/
+     if (name.value=="" || name.value==null){
+       alert("Please enter name");
+       name.focus();
+     }
+     else if (contactno.value=="" || contactno.value==null )
+     {
+      alert("Please Enter Contact Number");
+      contactno.focus();
+     }
+     else if (contactno.value.length!=10)
+     {
+      alert("Please Enter 10 digit number");
+      contcatno.focus();
+     }
+     else if(emailaddress.value=="" || emailaddress.value==null)
+     {
+      alert("Please enter email address");
+      emailaddress.focus();
+     }
+     else if (!emailexp.test(emailaddress.value))
+     {
+      alert("Please Enter Valid Email address");
+      emailaddress.focus();
+     }
+     else
+     {
+       document.getElementById('frmenquiry').submit();
+     }
+  }
+</script>
+
+<div class="row">
+  <div class="col-sm-7 mb-4">
+    <div class="row w-75 m-auto ">
+      <form id="frmenquiry" onsubmit="event.preventDefault(); validate(); " class="form-group border mt-5 w-100 m-auto rounded-4" action="{% url 'nouapp:contactus' %}" method="POST" >
+        {%csrf_token%}
+    
+           <h1 class="mt-5 text-decoration-underline fs-3 mb-5 " style="text-align:center; color:rgb(0, 0, 0)"><i class="fa-solid fa-arrow-up-from-bracket mx-3 fs-3"></i>Enquiry Form</h1>
+           {%if messages %}
+               {%for message in messages %}
+                 <p style="color: green; text-align: center; margin-top:20px;">{{message}}</p>
+               {% endfor %}
+           {% endif %}
+    
+          <div class="row mx-auto ">
+            <div class="col-4 fs-6 pt-1 "><b>Enter Name : </b></div>
+            <div class="col-8"><input type="text" name="name" class="form-control" id="name"/></div>
+          </div>
+    
+          <div class="row mx-auto mt-3">
+            <div class="col-4 fs-6 pt-1 mt-2"><b>Select Gender</b></div>
+            <div class="col-8 mt-3"><input type="radio" name="gender" value="Male" class="form-check-input mx-2 " />Male
+              <input type="radio" name="gender" value="Female" class="form-check-input mx-2 " />Female
+            </div>
+          </div>
+    
+          <div class="row mx-auto mt-3">
+            <div class="col-4 fs-6 pt-1 mt-2"><b>Enter Address</b></div>
+            <div class="col-8 mt-3"><textarea name="address" class="form-control"></textarea></div>
+          </div>
+    
+          <div class="row mx-auto mt-3">
+            <div class="col-4 fs-6 pt-1 mt-2 "><b>Contact no</b></div>
+            <div class="col-8 mt-3"><input type="number" id="contactno" name="contactno" class="form-control"></div>
+          </div>
+    
+          <div class="row mx-auto mt-3">
+            <div class="col-4 fs-6 pt-1 mt-2"><b>Email Address</b></div>
+            <div class="col-8 mt-3"><input type="text" id="emailaddress" name="emailaddress" class="form-control"></div>
+          </div>
+    
+          <div class="row mx-auto mt-3">
+            <div class="col-4 fs-6 pt-1 mt-2"><b>Enquiry text</b></div>
+            <div class="col-8 mt-3"><textarea name="enquirytext" class="form-control"></textarea></div>
+          </div>
+    
+          <div class="row  mt-5 mb-3">
+            <div class="col-4"></div>
+            <div class=" col-4"><button type="submit" class="btn text-light w-100" style="background-color:rgb(95 95 246);">Submit</button></div>
+          </div><br/>
+      </form>
+    </div>
+  </div>
+  <div class="col-sm-4">
+    <div class="row m-auto">
+      <img src="{% static 'images/myimg14.png' %}" style="margin-top: 100px;" class="w-100 h-50" alt="">
+    </div>
+  </div>
+       
+</div>
+
+  
+
+
+
+
+
+{% endblock %}

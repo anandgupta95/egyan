@@ -1,0 +1,12 @@
+
+:root{
+   --primary:#191c24;
+}
+
+.primary-color{
+background-color:var(--primary);
+ 
+}
+
+
+
