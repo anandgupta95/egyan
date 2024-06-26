@@ -1,0 +1,52 @@
+{% extends "adminparent.html" %}
+{% load static %}
+{% block body %}
+    <div class="row">
+        <h1 style="text-align:center;">View Students</h1>
+        <div class="col-sm-12">
+            <!-- View Students -->
+            <div class="mt-4 ">
+            {% for s in stu %}
+                <div class="row border rounded m-auto mx-4 mb-3" style="min-height: 250px;">
+                    <div class="row mt-4 mx-2">
+                        <div class="col-sm-1">
+                            <img src="{% static 'images/student.png' %}" class="mt-2" height="60px" width="60px" alt="">
+                        </div>
+                        <div class="col-sm-6 mx-2">
+                            <div class="row fs-4">{{s.name}}</div>
+                            <div class="row fs-6 text-secondary">{{s.program}}&nbsp;,&nbsp;{{s.branch}}</div>
+                            <div class="row fs-6 text-secondary">{{s.year}}</div>
+                        </div>
+                    </div> <hr>
+                    <div class="row">
+                        <div class="row">
+                            <div class="col-sm-2 text-secondary ">Roll no. : </div>
+                            <div class="col-sm-4 ">{{s.rollno}}</div>
+                            <div class="col-sm-2 text-secondary ">Gender : </div>
+                            <div class="col-sm-4 ">{{s.gender}}</div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-2 text-secondary ">Father Name. : </div>
+                            <div class="col-sm-4 ">{{s.fname}}</div>
+                            <div class="col-sm-2 text-secondary ">Mother Name : </div>
+                            <div class="col-sm-4 ">{{s.mname}}</div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-2 text-secondary ">Contact no. : </div>
+                            <div class="col-sm-4 ">{{s.contactno}}</div>
+                            <div class="col-sm-2 text-secondary ">Email Address : </div>
+                            <div class="col-sm-4 ">{{s.emailaddress}}</div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-sm-2 text-secondary ">Address : </div>
+                            <div class="col-sm-4 ">{{s.address}}</div>
+                            <div class="col-sm-2 text-secondary ">Reg. date : </div>
+                            <div class="col-sm-4 ">{{s.regdate}}</div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+            </div> 
+        </div>
+    </div>
+{% endblock body %}

@@ -1,0 +1,82 @@
+{% extends "adminparent.html" %}
+{% block body %}
+    <div class="row">
+        <div class="col-sm-12">
+            <h1 style="text-align:center;">Upload Study Material</h1>   
+            <!-- alert  -->
+    {%if messages %}
+       {%for message in messages %}
+          <div class="alert alert-success alert-dismissible fade show" role="alert">
+             {{message}}<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>
+       {% endfor %}
+    {% endif %}
+
+            <form action="{% url 'adminapp:uploadmaterial' %}" method="POST" enctype="multipart/form-data" class="form form-group mt-4">
+                {% csrf_token %}
+                <table class="table table-bordered text-light" style="width: 60%; margin: auto;">
+                    <tr>
+                        <td><label class="form-label mt-3">Select Program</label></td>
+                        <td>
+                            <select name="program" class="form-control text-light">
+                                <option selected >--Select Program---</option>
+                                <option value="B.Tech">B.Tech.</option>
+                                <option value="M.Tech">M.Tech.</option>
+                              </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><label class="form-label mt-3">Select Branch</label></td>
+                        <td>
+                            <select name="branch" class="form-control text-light">
+                                <option selected >--Select Branch--</option>
+                                <option value="Computer Science">Computer Science</option>
+                                <option value="Information Technology">Infromation Technology</option>
+                              </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><label class="form-label mt-3">Select Year</label></td>
+                        <td>
+                            <select name="year" class="form-control text-light">
+                                <option selected >--Select Year--</option>
+                                <option value="First year">First year</option>
+                                <option value="Second year">Second year</option>
+                                <option value="Third year">Third year</option>
+                                <option value="Final year">Final year</option>
+                              </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Enter Subject Name</td>
+                        <td><input type="text" name="subject" class="form-control text-light"></td>
+                    </tr>
+                    <tr>
+                        <td>Select Material type</td>
+                        <td>
+                            <select name="materialtype" class="form-control text-light">
+                                <option selected>-- Select Material type --</option>
+                                <option value="smat">Study Material</option>
+                                <option value="assign">Assignment</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Enter File Name</td>
+                        <td><input type="text" name="filename" class="form-control text-light"></td>
+                    </tr>
+                    <tr>
+                        <td>Select file to Upload</td>
+                        <td><input type="file" name="myfile" class="form-control"></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" style="text-align: center;">
+                            <button type="submit" class="btn btn-primary">Uplaod Video</button>
+                        </td>
+                    </tr>
+                </table>
+            </form>
+              
+        </div>
+    </div>
+{% endblock body %}

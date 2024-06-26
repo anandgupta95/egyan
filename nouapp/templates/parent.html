@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en">
+{% load static %}  
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>E-Gyan Portal</title>
+    <!-- link css -->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <!-- bootstrap CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+  </head>
+  <body style="margin: auto;">
+    <!-- header -->
+    <div class="row " style="background-color: rgb(17, 26, 150); border-bottom: 1px dashed rgb(255, 255, 255);">
+       <div class="col-sm-6 text-center text-light pb-2 pt-1">Contact us : +91 9555321540</div>
+       <div class="col-sm-6 text-center text-light pb-2 pt-1">Mail us : anandgupta965193@gmail.com</div>
+    </div>
+
+    <div class="">
+      <!-- nav bar  -->
+      <nav class="navbar sticky-top navbar-expand-lg bg-opacity-75" style="opacity:1; background-color:rgb(95 95 246)">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">
+            <span class=" fw-semibold fs-4 mt-1 mx-4 text-light ">E-Learning Portal </span>
+          </a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0  ">
+              <li class="nav-item mx-3">
+                <a class="nav-link active  text-light fs-6 text-center " aria-current="page" href="{% url 'nouapp:index' %}"><i class="fa-solid fa-house mx-2"></i> Home</a>
+              </li>
+              <!-- <li class="nav-item">
+                <a class="nav-link text-light fs-6 text-center " href="{% url 'nouapp:aboutus' %}"><i class="fa-solid fa-circle-info mx-2"></i>About us</a>
+              </li> -->
+              <li class="nav-item mx-3">
+                <a class="nav-link  text-light fs-6 text-center " href="{% url 'nouapp:registration' %}"><i class="fa-solid fa-address-card mx-2"></i>Registartion</a>
+              </li>
+              <li class="nav-item mx-3">
+                <a class="nav-link  text-light fs-6 text-center  " href="{% url 'nouapp:login' %}"><i class="fa-solid fa-user mx-2"></i>Login</a>
+              </li>
+              <li class="nav-item mx-3">
+                <a class="nav-link  text-light fs-6 text-center " href="{% url 'nouapp:contactus' %}"><i class="fa-solid fa-phone mx-2"></i>Contact us</a>
+              </li>
+            
+            <!-- </ul>
+            <form class="d-flex" role="search">
+              <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+              <button class="btn btn-outline-success" type="submit">Search</button>
+            </form> -->
+          </div>
+        </div>
+      </nav>
+
+      
+
+      <!-- body start  -->
+       {% block body %}
+           
+       {% endblock %}
+
+
+ <!-- footer start  -->
+ <div class="row " style="background-color:rgb(95 95 246)">
+    <div class="col-sm-3 mt-4 mb-4">
+      <div class="row text-light text-center mt-4 px-5 pb-4">
+        This E-learning portal welcomes all students, faculties & study 
+        centres to the very new & innovative online study portal. 
+        The portal is a unique 
+        which aims at providing online study material to the students.
+       </div>
+    </div>
+    <div class="col-sm-3 mt-4 mb-4">
+      <h1 class="px-3 mt-4 text-light fs-4"><i class="fa-solid fa-right-to-bracket mx-3"></i>Useful Links</h1>
+      <ul class="px-5 mx-3 mt-3 fs-5" style="list-style-type:none;">
+        <li><a href="{% url 'nouapp:index' %}" class="text-light" style="text-decoration: none;"><i class="fa-solid fa-caret-right mx-3"></i>Home</a></li>
+        <li><a href="{% url 'nouapp:registration' %}" class="text-light mt-5" style="text-decoration: none;"><i class="fa-solid fa-caret-right mx-3"></i>Registration</a></li>
+        <li><a href="{% url 'nouapp:login' %}" class="text-light mt-5" style="text-decoration: none;"><i class="fa-solid fa-caret-right mx-3"></i>Login</a></li>
+        <li><a href="{% url 'nouapp:contactus' %}" class="text-light mt-5" style="text-decoration: none;"><i class="fa-solid fa-caret-right mx-3"></i>Contact us</a></li>
+      </ul>
+    </div>
+    <div class="col-sm-3 mt-4 mb-4">
+      <h1 class="px-3 mt-4 text-light fs-4"><i class="fa-solid fa-right-to-bracket mx-3"></i>Student links</h1>
+      <ul class="px-5 mx-3 mt-3 fs-5" style="list-style-type:none;">
+        <li><a href="{% url 'studentapp:studenthome' %}" class="text-light" style="text-decoration: none;"><i class="fa-solid fa-caret-right mx-3"></i>Discussion</a></li>
+        <li><a href="{% url 'studentapp:studenthome' %}" class="text-light mt-5" style="text-decoration: none;"><i class="fa-solid fa-caret-right mx-3"></i>Study Material</a></li>
+        <li><a href="{% url 'studentapp:studenthome' %}" class="text-light mt-5" style="text-decoration: none;"><i class="fa-solid fa-caret-right mx-3"></i>Assignment</a></li>
+        <li><a href="{% url 'studentapp:studenthome' %}" class="text-light mt-5" style="text-decoration: none;"><i class="fa-solid fa-caret-right mx-3"></i>Feedback</a></li>
+      </ul>
+    </div>
+    <div class="col-sm-3 mt-4 mb-4">
+      <h1 class="px-3 mt-4 text-light fs-4"><i class="fa-solid fa-right-to-bracket mx-3"></i>Admin Links</h1>
+      <ul class="px-5 mx-3 mt-3 fs-6" style="list-style-type:none;">
+        <li><a href="{% url 'adminapp:adminhome' %}" class="text-light" style="text-decoration: none;"><i class="fa-solid fa-caret-right mx-3"></i>Manage Students</a></li>
+        <li><a href="{% url 'adminapp:adminhome' %}" class="text-light mt-5" style="text-decoration: none;"><i class="fa-solid fa-caret-right mx-3"></i>Upload Assignment</a></li>
+        <li><a href="{% url 'adminapp:adminhome' %}" class="text-light mt-5" style="text-decoration: none;"><i class="fa-solid fa-caret-right mx-3"></i>Upload Study mat.</a></li>
+        <li><a href="{% url 'adminapp:adminhome' %}" class="text-light mt-5" style="text-decoration: none;"><i class="fa-solid fa-caret-right mx-3"></i>Upload News</a></li>
+      </ul>
+    </div>
+    
+ </div>
+     
+      <!-- footer 2  -->
+      <div class="row text-light " style="background-color: rgb(8, 8, 8); ">
+        <span style="text-align: center; " class="text-warning">Designed & Developed By | Anand Gupta</span>
+      </div>
+
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+  </body>
+</html>

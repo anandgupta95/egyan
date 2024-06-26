@@ -1,0 +1,99 @@
+{% extends "parent.html" %}
+{% load static %} 
+
+
+
+{% block body %}
+<script>
+   function validate()
+   {
+    var userid = document.getElementById('userid');
+    var password = document.getElementById('password');
+    if(userid.value =="" || userid==null)
+    {
+      alert("Please Enter User id");
+      userid.focus();
+    } 
+    else if(password.value=="" || password.value ==null)
+    {
+      alert('Please Enter Password');
+      password.focus();
+    }
+    else
+    {
+      document.getElementById('frmlogin').submit();
+    }
+   }
+</script>
+
+<div class="row mt-4 mb-5">
+  <!-- left -->
+  <div class="col-sm-5">
+       <img src="{% static 'images/myimg.png' %}" style="height: 500px;" class="mx-5 " alt="">
+  </div>
+  <!-- right -->
+  <div class="col-sm-7">
+    <div class="row mt-5 w-75 mb-5 m-auto rounded-3 shadow border">
+      
+       <!--event.prevent default stop the form autosubmit after clicking on submit  -->
+      <form  id="frmlogin" onsubmit="event.preventDefault(); validate();" class="form-group" method="POST" action="{% url 'nouapp:login' %}">
+        {% csrf_token %}
+          
+           <div class="row mt-3 mb-3 p-0">
+               <!-- alert message -->
+               {%if messages %}
+                  {%for message in messages %}
+                  <div class="alert alert-success alert-dismissible fade show w-75 m-auto" role="alert">
+                      {{message}}<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                  </div>
+                  {% endfor %}
+               {% endif %}
+           </div>
+    
+           <!-- heading -->
+           <div class="row mt-2">
+            <h1 class="  text-decoration-underline fs-2 " style="text-align:center; color:rgb(0, 0, 0)">
+               <i class="fa-solid fa-user fs-3 mx-2"></i>Login Form
+            </h1>
+           </div>
+    
+           <!-- image -->
+           <!-- <div class="mt-5" >
+            <img src="{% static 'images/u1.png' %}" style=" height:15%; width:15%; margin-left:45%" alt="">
+           </div> -->
+    
+           <!-- login inputs -->
+           <div class="row mx-auto mt-5 ">
+            <div class="col-4 fs-5 pt-1 "><b>Enter user ID</b></div>
+            <div class="col-8"><input type="text" id="userid" name="userid" class="form-control"/></div>
+          </div>
+      
+          <div class="row mx-auto mt-3">
+            <div class="col-4 fs-5 pt-1 "><b>Enter Password</b></div>
+            <div class="col-8"><input type="password" id="password" name="password" class="form-control" /></div>
+          </div>
+      
+          <div class="row mx-auto mt-3 ">
+            <div class="col-4 fs-5 pt-1 "><b>User type</b></div>
+            <div class="col-8">
+              <select name="usertype" class="form-control">
+              <option selected> --Select usertype-- </option>
+              <option value="student">Student</option>
+              <option value="admin">Admin</option>
+            </select>
+            </div>
+          </div>
+      
+          <div class="row  mt-5 mb-3">
+            <div class="col-4"></div>
+            <div class=" col-4"><button type="submit" class="btn w-100 text-light" style="background-color: rgb(95 95 246);">Login</button></div>
+          </div><br/>
+    
+      </form>
+    </div>
+  </div>
+</div>
+
+
+{% endblock %}
+

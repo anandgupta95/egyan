@@ -1,0 +1,84 @@
+{% extends "adminparent.html" %}
+{% block body %}
+<div class="row">
+        <div class="col-sm-12">
+             
+            <div class="row mt-3">
+                <div class="col-sm-9">
+
+                    <div class="row">
+                      <!-- CSE Student -->
+                       <div class="col-sm-4 mx-auto">
+                          <h1 style="text-align:center;" class="fs-4 bg-secondary w-100 mx-auto p-1">CSE Students </h1>
+                          <div class="row mt-4">
+                            <table class="table border-bottom text-light">
+                              <tr>
+                                <th>Roll no.</th>
+                                <th>Name</th>
+                                <th>Year</th>
+                              </tr>
+                             {% for c in cse %}
+                                <tr>
+                                  <td>{{c.rollno}}</td>
+                                  <td>{{c.name}}</td>
+                                  <td>{{c.year}}</td>
+                                <tr>
+                             {% endfor %}
+                            </table>
+                          </div>
+                       </div>
+                       <!-- IT Student -->
+                       <div class="col-sm-4 mx-auto">
+                          <h1 style="text-align:center;" class="fs-4 bg-secondary mx-auto w-100 p-1">IT Students </h1>
+                          <div class="row mt-4">
+                            <table class="table border-bottom text-light">
+                              <tr>
+                                <th>Roll no.</th>
+                                <th>Name</th>
+                                <th>Year</th>
+                              </tr>
+                             {% for i in it %}
+                                <tr>
+                                  <td>{{i.rollno}}</td>
+                                  <td>{{i.name}}</td>
+                                  <td>{{i.year}}</td>
+                                <tr>
+                             {% endfor %}
+                            </table>
+                          </div>
+                       </div>
+                    </div>
+                    
+                    
+
+                    <!-- View Feedbacks -->
+                    <h1 style="text-align:center;" class="fs-4 mt-5 bg-secondary mx-auto p-1">View Complain</h1>
+                    <div class="row mt-4">
+                      <table class="table border-bottom text-light">
+                       {% for f in complain %}
+                        <tr>
+                          <th>{{f.subject}}</th>
+                          <td>{{f.responsetext}}</td>
+                        </tr>
+                       {% endfor %}
+                      </table>
+                      
+                    </div>
+                    
+                </div>
+                <div class="col-sm-3">
+                    <h1 style="text-align:center;background-color:rgb(95 95 246);" class="fs-4 p-1">News & Notice</h1>  
+                  <div>
+                     <marquee behavior="scroll" direction="down">
+                        {% for n in news %}
+                          <div class="row mt-2 p-3 border-bottom">{{n.newstext}}</div>
+                        {% endfor %}
+                     </marquee>
+                  </div>  
+                  
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock body %}

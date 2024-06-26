@@ -1,0 +1,245 @@
+{% extends "parent.html" %}
+{% load static %}
+
+{% block body %}
+
+      <!-- crousal start  -->
+
+      <div id="carouselExample" class="carousel slide row">
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img src="{% static 'images/myslide2.jpg' %}" class="d-block w-100" style="height:400px" alt="...">
+          </div>
+          <div class="carousel-item">
+            <img src="{% static 'images/myslide3.jpg' %}" class="d-block w-100" style="height:400px" alt="...">
+          </div>
+          <div class="carousel-item">
+            <img src="{% static 'images/myslide1.jpg' %}" class="d-block w-100" style="height:400px" alt="...">
+          </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+      
+      <!-- News -->
+      <div class=" row text-light mt-1 " style="background-color:rgb(95 95 246);">
+        <marquee behavior="" direction="" onmouseover="stop()" onmouseout="start()">
+          <ul style="list-style-type:none ;" class="pt-2 ">
+            {% for n in news %}
+               <li style="display: inline;" class="mx-3">{{n.newstext}}</li>
+            {% endfor %}
+          </ul>
+        </marquee>
+      </div>
+
+      <!-- about this portal -->
+      <div class="row mb-5 mt-5">
+
+        <div class="col-sm-8 ">
+
+         <div class="row mx-5   fs-2  fw-bolder">
+            <h1 class="mx-2 " style="color: rgb(95 95 246);">About this Portal</h1>
+            <div class=" mx-3 row  w-75" style="height:3px; background-color:rgb(95 95 246);"></div> 
+         </div>
+         <div class="mt-2 mx-5 mt-3  ">
+          <p class=" mt-5 fs-6">
+           This E-learning portal welcomes all students, faculties & study centres 
+           to the very new & innovative online study portal. The portal is a unique
+          which aims at providing online study material to the students.
+         </p>
+         <p class="fs-6">
+         The portal is accessible from any hook and corner of the world if the system allows 
+         the permission to its users. It is also fully secured and accessible 24 x 7 to its 
+         authorised users.<br> <br>It will resolve the academic issues such as E-content 
+         Distribution, Delivery, Tracking, Assessment, Progress Monitoring & Controlling of 
+         all stakeholders of the system i.e. students, teachers, study centre 
+         administrators as well as  Admins when they are at a 
+         distance.
+         </p>
+       </div>
+              
+        </div>
+
+        <div class="col sm-4">
+          <div class="row w-75 mx-auto" style="border:2px solid rgb(95 95 246); height: 350px; overflow-y: hidden;">
+            <div class="row w-100 mx-auto" style="background-color:rgb(95 95 246);">
+              <span class="text-light text-center py-1 fs-4">News & Events</span>
+            </div>
+            <marquee behavior="scroll" direction="down" onmouseover="stop()" onmouseout="start()">
+              {% for n in news %}
+                 <div class="row w-100 mx-auto mb-2 mt-2 py-2 px-4 " style="border-bottom: 2px dashed rgb(95 95 246);">{{n.newstext}}</div>
+              {% endfor %}
+            </marquee>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- user of this portal  -->
+
+      <!-- parallex image -->
+      <div style="background-image: url('../static/images/cc2.jpg');min-height: 500px;background-attachment: fixed;
+          background-position: center;
+          background-repeat: no-repeat;
+          background-size: cover;">
+              <div class="row bg-body-secondary bg-opacity-75">
+
+                <div class="row mx-5  mt-5  fs-2  fw-bolder">
+                 <h1 class="mx-2 " style="color: rgb(95 95 246);">Users of this E-learning Portal</h1>
+                 <div class=" mx-3 row w-50" style="height:3px; background-color: rgb(95 95 246);"></div>
+                </div>
+     
+                 <div class="col-sm-3 m-auto mt-5 mb-5 rounded-2 myuser " style="background-color: rgb(95 95 246);">
+                      <div class="mx-3 mt-4 mb-4 shadow bg-light border rounded ">
+                          <div class="row rounded-circle mt-4 m-auto" style="height: 60px; width: 60px; background-color: #fcfcfc;"><i class="fa-solid fa-chalkboard-user text-center text-dark p-2 mt-2 fs-1"></i></div>
+                          <div class="row mt-3 text-center px-4">The Superadmin admin can login to monitor the portal, 
+                                     provide access to authorised stake holders & upload study material.</div>
+                           <div class=" row mt-4 mb-4">
+                             <div class="col-sm-2"></div>
+                             <div class="col-sm-8">
+                               <a href="{% url 'adminapp:viewstudent' %}" class="text-decoration-none"><button class="btn rounded-5 w-100" style="background-color: #f9de0d;">Super Admin</button></a>
+                             </div>
+                             <div class="col-sm-2"></div>
+                           </div>
+                      </div>
+                 </div>
+     
+                 <div class="col-sm-3 m-auto mt-5 mb-5  rounded-2 shadow" style="background-color: rgb(95 95 246);" >
+                   <div class="mx-3 mt-4 mb-4 shadow bg-light border rounded ">
+                       <div class="row rounded-circle mt-4 m-auto" style="height: 60px; width: 60px;  background-color: #ffffff;"><i class="fa-solid fa-book text-center text-dark p-2 mt-2 fs-3"></i></div>
+                       <div class="row mt-3 text-center px-4">The Admin authorised personnel can login to track students 
+                              progress, enroll students, schedule assignments & generate reports.</div>
+                        <div class=" row mt-4 mb-4">
+                          <div class="col-sm-2"></div>
+                          <div class="col-sm-8">
+                              <a href="{% url 'adminapp:viewstudent' %}" class="text-decoration-none"><button class="btn  rounded-5 w-100" style="background-color: #f9de0d;">Teachers</button></a>
+                          </div>
+                          <div class="col-sm-2"></div>
+                        </div>
+                   </div>
+                 </div>
+     
+                 <div class="col-sm-3 m-auto mt-5 mb-5 rounded-2 shadow" style="background-color: rgb(95 95 246);">
+                      <div class="mx-3 mt-4 mb-4 shadow bg-light border rounded ">
+                          <div class="row  rounded-circle mt-4 m-auto" style="height: 60px; width: 60px;  background-color: #ffffff;"><i class="fa-solid fa-users text-center text-dark p-2 mt-2 fs-1"></i></div>
+                          <div class="row mt-3 text-center px-4">The  enrolled students can login to view the notification 
+                                , access the e-contents, give assignments & track thier progress report..</div>
+                           <div class=" row mt-4 mb-4">
+                             <div class="col-sm-2"></div>
+                             <div class="col-sm-8">
+                               <a href="{% url 'studentapp:studenthome' %}" class="text-decoration-none"><button class="btn rounded-5 w-100" style="background-color: #f9de0d;">Student</button></a>
+                             </div>
+                             <div class="col-sm-2"></div>
+                           </div>
+                      </div>
+                 </div>   
+           </div>
+      </div>
+
+         
+
+      <!-- student services -->
+      <div class="row mb-5 mt-5">
+        <div class="row mx-5  mt-4  fs-2 fw-bolder" style="color: rgb(95 95 246);">
+          <h1 class="mx-2 ">Student Services</h1>
+          <div class=" mx-3  w-25" style="height:3px; background-color: rgb(95 95 246);"></div> 
+        </div>
+
+        <div class="row  mt-5 mb-4  m-auto">
+        
+          <div class="col-sm-2 rounded-3 mt-2 mx-auto m-auto " style="height:300px; border: 2px solid rgb(95 95 246);" >
+               <img src="{% static 'images/myimg14.png' %}" class=" mt-4 h-50 w-100"alt="">
+
+               <a href="{% url 'studentapp:studenthome' %}" class="text-decoration-none text-light ">
+                 <div class=" text-center mt-5 p-2 w-75 mb-2 m-auto rounded fs-5" style="background-color: rgb(95 95 246);">E-Books</div>
+               </a>
+          </div>
+          <div class="col-sm-2 rounded-3 mt-2 mx-auto m-auto " style="height:300px; border: 2px solid rgb(95 95 246);" >
+               <img src="{% static 'images/myimg15.png' %}" class=" mt-4 h-50 w-100"alt="">
+
+               <a href="{% url 'studentapp:studenthome' %}" class="text-decoration-none text-light ">
+                 <div class=" text-center mt-5 p-2 w-75 mb-2 m-auto rounded fs-5 " style="background-color: rgb(95 95 246);">Assessment</div>
+               </a>
+          </div>
+          <div class="col-sm-2 rounded-3 mt-2 mx-auto m-auto " style="height:300px; border: 2px solid rgb(95 95 246);" >
+               <img src="{% static 'images/myimg16.png' %}" class=" mt-4 h-50 w-100"alt="">
+
+               <a href="{% url 'studentapp:studenthome' %}" class="text-decoration-none text-light ">
+                 <div class=" text-center mt-5 p-2 w-75 mb-2 m-auto rounded fs-5 " style="background-color: rgb(95 95 246);">Discussion</div>
+               </a>
+          </div>
+          <div class="col-sm-2 rounded-3 mt-2 mx-auto m-auto " style="height:300px; border: 2px solid rgb(95 95 246);" >
+               <img src="{% static 'images/myimg17.png' %}" class=" mt-4 h-50 w-100"alt="">
+
+               <a href="{% url 'studentapp:studenthome' %}" class="text-decoration-none text-light ">
+                 <div class=" text-center mt-5 p-2 w-75 mb-2 m-auto rounded fs-5 " style="background-color: rgb(95 95 246);">Study Material</div>
+               </a>
+          </div>
+
+          
+        </div>
+         <div class="row  mt-5 mb-4  m-auto">
+        
+          <div class="col-sm-2 rounded-3 mt-2 mx-auto m-auto " style="height:300px; border: 2px solid rgb(95 95 246);" >
+               <img src="{% static 'images/myimg5.png' %}" class=" mt-4 h-50 w-100"alt="">
+
+               <a href="{% url 'studentapp:studenthome' %}" class="text-decoration-none text-light ">
+                 <div class=" text-center mt-5 p-2 w-75 mb-2 m-auto rounded  fs-5" style="background-color: rgb(95 95 246);">Login</div>
+               </a>
+          </div>
+          <div class="col-sm-2 rounded-3 mt-2 mx-auto m-auto " style="height:300px; border: 2px solid rgb(95 95 246);" >
+               <img src="{% static 'images/myimg4.jpg' %}" class=" mt-4 h-50 w-100"alt="">
+
+               <a href="{% url 'nouapp:registration' %}" class="text-decoration-none text-light ">
+                 <div class=" text-center mt-5 p-2 w-75 mb-2 m-auto rounded fs-5 " style="background-color: rgb(95 95 246);">Registration</div>
+               </a>
+          </div>
+          <div class="col-sm-2 rounded-3 mt-2 mx-auto m-auto " style="height:300px; border: 2px solid rgb(95 95 246);" >
+               <img src="{% static 'images/myimg3.png' %}" class=" mt-4 h-50 w-100"alt="">
+
+               <a href="{% url 'nouapp:contactus' %}" class="text-decoration-none text-light ">
+                 <div class=" text-center mt-5 p-2 w-75 mb-2 m-auto rounded fs-5 " style="background-color: rgb(95 95 246);">Enquiry</div>
+               </a>
+          </div>
+          <div class="col-sm-2 rounded-3 mt-2 mx-auto m-auto " style="height:300px; border: 2px solid rgb(95 95 246);" >
+               <img src="{% static 'images/myimg6.png' %}" class=" mt-4 h-50 w-100"alt="">
+
+               <a href="{% url 'studentapp:studenthome' %}" class="text-decoration-none text-light ">
+                 <div class=" text-center mt-5 p-2 w-75 mb-2 m-auto rounded  fs-5" style="background-color: rgb(95 95 246);">Assignment</div>
+               </a>
+          </div>
+
+          
+        </div>
+      </div>
+
+      <!-- Our Courses -->
+      <div class="row bg-dark-subtle mb-4">
+        <div class="row mx-5  mt-4 mb-5  fs-2 fw-bolder" style="color: rgb(95 95 246);">
+          <h1 class="mx-2 ">Our Courses</h1>
+          <div class=" mx-3 row  w-25" style="height:3px; background-color: rgb(95 95 246);"></div> 
+        </div>
+         <div class="col-sm-3 mb-3 mx-auto">
+             <img src="{% static 'images/myimg10.png' %}" class="w-100 rounded-3 shadow " height="200px" alt="">
+             <h1 class="text-center fs-3 mt-4 mb-3" style="color: rgb(95 95 246);">B.tech/M.tech</h1>
+         </div>
+         <div class="col-sm-3 mx-auto">
+             <img src="{% static 'images/myimg11.png' %}" class="w-100 rounded-3 shadow " height="200px" alt="">
+             <h1 class="text-center fs-3 mt-4 mb-3" style="color: rgb(95 95 246);">D.pharma/B.Pharma</h1>
+         </div>
+         <div class="col-sm-3 mx-auto">
+             <img src="{% static 'images/myimg17.png' %}" class="w-100 rounded-3 shadow " height="200px" alt="">
+             <h1 class="text-center fs-3 mt-4 mb-3" style="color: rgb(95 95 246);">BCA/MCA</h1>
+         </div>
+         
+      </div>
+
+    
+
+      {% endblock%}
